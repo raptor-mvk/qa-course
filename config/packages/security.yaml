@@ -29,7 +29,7 @@ security:
         basic:
             pattern: ^/api/v4/get-users
             stateless: true
-            customAuthenticator: App\Security\JWTTokenAuthenticator
+            custom_authenticator: App\Security\JWTTokenAuthenticator
             provider: app_user_provider
         main:
             http_basic:
