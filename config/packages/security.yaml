@@ -1,6 +1,10 @@
 security:
     enable_authenticator_manager: true
     providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: login
         users_in_memory:
             memory:
                 users:
@@ -19,6 +23,14 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        token:
+            pattern: ^/api/v1/token
+            security: false
+        basic:
+            pattern: ^/api/v4/get-users
+            stateless: true
+            customAuthenticator: App\Security\JWTTokenAuthenticator
+            provider: app_user_provider
         main:
             http_basic:
                 realm: Secured Area
