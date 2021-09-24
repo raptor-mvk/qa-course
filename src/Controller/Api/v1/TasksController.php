@@ -13,7 +13,7 @@ class TasksController extends AbstractFOSRestController
 {
     /**
      * @Rest\Get("/api/v1/tasks")
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_USER", statusCode=403)
      */
     public function apiTasksAction(Request $request): Response
     {
@@ -30,7 +30,7 @@ class TasksController extends AbstractFOSRestController
 
     /**
      * @Rest\Get("/server-api/v1/tasks")
-     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_ADMIN", statusCode=403)
      */
     public function serverApiTasksAction(Request $request): Response
     {
