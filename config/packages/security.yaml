@@ -9,10 +9,10 @@ security:
             memory:
                 users:
                     admin:
-                        password: 'my_pass'
+                        password: 'strong-password'
                         roles: 'ROLE_ADMIN'
                     user:
-                        password: 'other_pass'
+                        password: 'password'
                         roles: 'ROLE_USER'
 
     password_hashers:
@@ -26,12 +26,19 @@ security:
         token:
             pattern: ^/api/v1/token
             security: false
-        basic:
-            pattern: ^/api/v4/get-users
+        healthCheck:
+            pattern: ^/api/v1/health-check
+            security: false
+        jwtSecured: &jwtSecured
+            pattern: ^/api/v(3|4)
             stateless: true
             custom_authenticator: App\Security\JWTTokenAuthenticator
             provider: app_user_provider
-        main:
+        clientApi:
+            <<: *jwtSecured
+            pattern: ^/api/v1/tasks
+        serverApi:
+            pattern: ^/server-api
             http_basic:
                 realm: Secured Area
             lazy: true
