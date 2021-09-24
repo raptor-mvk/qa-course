@@ -8,6 +8,8 @@ fos_rest:
     exception:
         codes:
             Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException: 401
+            Symfony\Component\Security\Core\Exception\AccessDeniedException: 403
+            Symfony\Component\HttpKernel\Exception\HttpException: 403
 #        messages:
 #            App\Exception\MyException: Forbidden area.
     format_listener:
