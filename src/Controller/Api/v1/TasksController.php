@@ -21,7 +21,7 @@ class TasksController extends AbstractFOSRestController
 
         return new JsonResponse(
             [
-                'username' => $user === null ? 'No authenticated user' : $user->getUserIdentifier(),
+                'username' => $user === null ? 'No authenticated user' : $user->getUsername(),
                 'roles' => $user === null ? 'No authenticated user' : $user->getRoles(),
                 'tasks' => 'No tasks found for user',
             ]
