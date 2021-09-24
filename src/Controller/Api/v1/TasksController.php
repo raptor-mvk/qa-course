@@ -34,7 +34,7 @@ class TasksController extends AbstractFOSRestController
      */
     public function serverApiTasksAction(Request $request): Response
     {
-        return new JsonResponse('',
+        return new JsonResponse([],
             Response::HTTP_NO_CONTENT
         );
     }
